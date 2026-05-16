@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Generated outputs (large, not source)
+picks/
+outputs/
+*.zip
+*.safetensors
+*.ckpt
+*.pt
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+
+# gh-pages has its own git repo (github.com/OmnifySolutions/cordelia.cult)
+gh-pages/
+
+# Secrets / credentials
+.env
+*.json.secret
