@@ -23,7 +23,10 @@ desktop.ini
 
 # Editor
 .vscode/
+.idea/
 *.swp
+*.swo
+node_modules/
 
 # gh-pages has its own git repo (github.com/OmnifySolutions/cordelia.cult)
 gh-pages/
