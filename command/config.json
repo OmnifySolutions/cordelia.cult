@@ -1,0 +1,37 @@
+{
+  "launch_date": "2026-05-15",
+  "handle": "@cordelia.cult",
+  "persona_name": "Cordelia Vale",
+  "audience_nickname": "the cult",
+  "horizon_days": 180,
+  "platforms": {
+    "tiktok": "https://www.tiktok.com/@cordelia.cult",
+    "instagram": "https://www.instagram.com/cordelia.cult",
+    "youtube": "https://www.youtube.com/@cordelia.cult",
+    "pinterest": "https://www.pinterest.co.uk/cordeliacult/",
+    "gumroad": "https://cordelia-cult.gumroad.com",
+    "linktree": "https://linktr.ee/cordeliacult",
+    "beehiiv": "https://thecult.beehiiv.com"
+  },
+  "quotas": {
+    "seedance_daily": 100,
+    "kling_daily": 66
+  },
+  "milestones": [
+    { "day": 7,   "label": "Week 1 shipped",        "metric": "21 posts" },
+    { "day": 14,  "label": "Mid-Phase 1",            "metric": "200–800 TT" },
+    { "day": 21,  "label": "TT Shop unlock",         "metric": "1K TT followers" },
+    { "day": 30,  "label": "First commission",       "metric": "£20–100" },
+    { "day": 45,  "label": "Wallpaper Pack live",    "metric": "£100–300 cum." },
+    { "day": 60,  "label": "Amazon Influencer",      "metric": "£150–500 / mo" },
+    { "day": 90,  "label": "Brand outreach",         "metric": "£400–1.5K / mo" },
+    { "day": 180, "label": "Run-rate target",        "metric": "£1.5–4K / mo" }
+  ],
+  "follower_milestones": {
+    "tiktok":    [1000, 5000, 10000, 25000, 50000, 100000],
+    "instagram": [1000, 5000, 10000, 25000, 50000],
+    "youtube":   [100, 1000, 5000, 10000],
+    "pinterest": [1000, 10000, 50000],
+    "gumroad":   [5, 25, 100, 500]
+  }
+}

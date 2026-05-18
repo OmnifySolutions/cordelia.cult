@@ -4,9 +4,11 @@ This is a solo operator building an AI **dark academia / gothic** aesthetic pers
 
 **Approved plan:** `C:\Users\Daryll\.claude\plans\2-i-heard-about-pure-lovelace.md`
 
-## Current state — SUSPENDED 2026-05-18 (video stack revised)
+## Current state — SUSPENDED 2026-05-18 (dashboard built + video stack revised)
 
 Phase 0 in progress. Pick up at "Resume checklist" below.
+
+**New tool: Cordelia Command** — double-click `cordelia.bat` in repo root → opens local operator dashboard at `localhost:8080/command/`. Read-only against the project markdown files, with localStorage for daily-mutating state (quest checkoffs, quota tickers, follower entries, ledger, affiliate status overrides). Use it as the primary daily-driver page.
 
 - **Phase:** 0 (build the persona)
 - **Handle:** `@cordelia.cult` ✅ registered on all 5 platforms (per user, 2026-05-15)
@@ -18,7 +20,15 @@ Phase 0 in progress. Pick up at "Resume checklist" below.
 - **GH Pages site:** ✅ **LIVE** at `https://OmnifySolutions.github.io/cordelia.cult`
 - **Folder rename** (`OF Girl #1` → `cordelia.cult`): ⏸️ still pending, manual via File Explorer when Claude is closed
 
-### What changed this session (2026-05-18)
+### What changed this session (2026-05-18 — afternoon: dashboard)
+
+- **Built `command/` operator dashboard.** Vanilla HTML/CSS/JS, no build step, matches gh-pages stack. 12 sections in one scroll: status bar, today's quest (runbook-derived checklist), daily quota tickers (Seedance/Kling), phase progress bar, 5 platform cards, revenue ledger, affiliate scrying board (parses `affiliate/programs.md` Tier 1–3, click status to cycle), 6 pillar cards, prompt assembler (copies to clipboard), tool launcher with 22 tiles in 5 groups, week-1 caption browser, hard-no + AI disclosure footer.
+- **Data model:** read-only against `CLAUDE.md`, `analytics/log.md`, `affiliate/programs.md`, `persona/bible.md`, `persona/style.md`, `content/week_01/captions.md`, `content/video_stack.md`. localStorage namespace `cc:*` holds the mutating state. No write-back — markdown stays the source of truth.
+- **Launcher:** `cordelia.bat` at repo root. Double-click → opens browser to `localhost:8080/command/` + runs `python -m http.server 8080`. Close console to stop. Optional always-on instructions in `command/README.md` (drop a shortcut into `shell:startup`).
+- **Smoke-tested against real markdown:** parser pulls 4 affiliate tables (8+14+4 programs), 6 pillars, 7 hard-nos, 8 subject pillars, both prompts, 8 baseline-goal rows, and all 21 captions across TT/IG/YT × Day 1–7.
+- **Explicitly NOT built:** auto-fetch follower counts (no public APIs without OAuth), auto-post, Colab triggers, multi-device sync, GH Pages deploy. All deliberate. v1 shape documented in `command/README.md`.
+
+### What changed this session (2026-05-18 — morning: video stack)
 
 - **Video stack pivot — Seedance 2.0 is now primary.** Web research (May 2026) showed Seedance 2.0 (ByteDance, free) delivers 1080p, no watermark, commercial-use OK, 100 credits/day — beats the Colab notebooks for daily TikTok-grade output.
 - **New ranking:** Primary = Seedance 2.0. Secondary = Kling AI (66 credits/day, 720p, watermarked — use for cinematic motion only). Backup = Wan 2.2 on Colab T4 when daily quotas exhausted. Precision-only = LivePortrait (`video_realistic.ipynb` Section A) for face control, SadTalker (Section B) for lip-sync voice posts.
@@ -82,6 +92,12 @@ Phase 0 in progress. Pick up at "Resume checklist" below.
 - `affiliate/programs.md` — tracker for every affiliate program (status, login, commission)
 - `outreach/brand_template.md` — DM template for brand deals
 - `analytics/log.md` — weekly numbers + decisions
+- `cordelia.bat` — one-click launcher for the local dashboard
+- `command/` — Cordelia Command local operator dashboard
+  - `command/index.html` + `command/styles.css` + `command/app.js` — single-page UI
+  - `command/config.json` — launch date, handle, platform URLs, quota maxes, milestones
+  - `command/lib/{markdown,state,data,launcher}.js` — parser, localStorage wrapper, source loaders, tool tile config
+  - `command/README.md` — launch + section + troubleshooting guide
 
 ## Resume checklist — pick up here next session
 
@@ -96,6 +112,7 @@ These are all USER actions. Claude can't run Colab or click Civitai.
 3. **LoRA training** (~1 hr) — upload the 30 picks to `civitai.com/training` → free quota → download the resulting `.safetensors` → drop in Google Drive.
 4. **Ping Claude:** "LoRA done, wire it in" → Claude edits Cell 4 of `sdxl_pipeline.ipynb` + wires LoRA into `video_realistic.ipynb` + writes Week 1's content batch.
 5. **Sign up for Seedance 2.0** (https://seedance.ai or seedance.tv) and **Kling AI** (https://klingai.com) before Sunday batch. Free, no credit card. Test each by uploading one Cordelia still + prompt "slow dolly in, candle flicker, hair drifts gently" — verify quality before committing the workflow. See `content/video_stack.md`.
+6. **Open the dashboard daily.** Double-click `cordelia.bat` → opens `localhost:8080/command/` in browser. Tick "Tonight's Quest" as you ship posts, increment quotas as you generate clips, update platform cards when follower counts move, log revenue in the Ledger. Replaces the mental-juggling of runbook + CLAUDE.md + analytics in three different tabs.
 
 ### Track B — GitHub Pages push ✅ DONE 2026-05-16
 
