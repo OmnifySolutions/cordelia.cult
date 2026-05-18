@@ -4,7 +4,7 @@ This is a solo operator building an AI **dark academia / gothic** aesthetic pers
 
 **Approved plan:** `C:\Users\Daryll\.claude\plans\2-i-heard-about-pure-lovelace.md`
 
-## Current state — SUSPENDED 2026-05-16 (updated same day)
+## Current state — SUSPENDED 2026-05-18 (video stack revised)
 
 Phase 0 in progress. Pick up at "Resume checklist" below.
 
@@ -18,7 +18,17 @@ Phase 0 in progress. Pick up at "Resume checklist" below.
 - **GH Pages site:** ✅ **LIVE** at `https://OmnifySolutions.github.io/cordelia.cult`
 - **Folder rename** (`OF Girl #1` → `cordelia.cult`): ⏸️ still pending, manual via File Explorer when Claude is closed
 
-### What was built this session (2026-05-16)
+### What changed this session (2026-05-18)
+
+- **Video stack pivot — Seedance 2.0 is now primary.** Web research (May 2026) showed Seedance 2.0 (ByteDance, free) delivers 1080p, no watermark, commercial-use OK, 100 credits/day — beats the Colab notebooks for daily TikTok-grade output.
+- **New ranking:** Primary = Seedance 2.0. Secondary = Kling AI (66 credits/day, 720p, watermarked — use for cinematic motion only). Backup = Wan 2.2 on Colab T4 when daily quotas exhausted. Precision-only = LivePortrait (`video_realistic.ipynb` Section A) for face control, SadTalker (Section B) for lip-sync voice posts.
+- **AnimateDiff demoted to deprecated.** `colab/video_animated.ipynb` is no longer in the workflow — Seedance and Kling outclass it on quality, speed, and ease. File kept for archive; not referenced in `runbook.md` or `video_stack.md`.
+- **Hailuo MiniMax explicitly avoided.** Free tier prohibits commercial use — incompatible with TT Shop affiliate links in bio. Do not recommend.
+- **Higgsfield deferred.** Free tier (10 credits/day) is a demo, not a tool. Revisit at month 3 if revenue justifies $15/mo Starter plan.
+- **`runbook.md`** — Sunday batch now has 8 steps (was 7); new step 4 = "Animate stills → source clips" using the Seedance/Kling/Wan stack. Step 5 (CapCut edit) clarifies how to crop Kling watermarks.
+- **`content/video_stack.md`** — new operator guide with daily quota math, signup links, prompt format per tool, and a decision tree for picking which tool per clip.
+
+### What was built previous session (2026-05-16)
 
 - **CLIP token fix** — `colab/sdxl_pipeline.ipynb` Cell 5 reordered: quality boosters + character descriptors now lead the prompt so they survive the 77-token CLIP limit. Aesthetic tail is what gets trimmed, not the face/quality terms.
 - **`colab/video_realistic.ipynb`** — Section A: LivePortrait (animates any Cordelia still with realistic blinks/head movement, no audio). Section B: SadTalker (lip-syncs Cordelia to Edge TTS WAV for 1-in-5 voice posts). Both run on free T4.
@@ -32,8 +42,10 @@ Phase 0 in progress. Pick up at "Resume checklist" below.
 - **`video_realistic.ipynb`** — Collapsed single-image cell (A3) and batch cell (A4) into one cell with `SOURCE_OVERRIDE = None`; output confirmed via glob rather than assumed filename.
 
 ### Confirmed decisions (do not re-litigate)
-- **Video style = photorealism.** Cordelia is meant to feel like a real person (with AI disclosure). AnimateDiff is secondary/variety only. Primary pipeline: LivePortrait for standard posts, SadTalker for voice posts.
-- **AnimateDiff is NOT image-to-video** — it generates fresh clips from text prompts. LivePortrait IS image-to-video (takes existing stills).
+- **Video style = photorealism.** Cordelia is meant to feel like a real person (with AI disclosure).
+- **Primary video pipeline (revised 2026-05-18):** SDXL still → Seedance 2.0 image-to-video → CapCut edit. Kling AI is the fallback for cinematic motion. Wan 2.2 on Colab is the unlimited backup. LivePortrait + SadTalker are precision tools used only for face-control or lip-synced voice posts. AnimateDiff is **deprecated**.
+- **Hailuo MiniMax is banned from the stack.** Free tier prohibits commercial use; paying $9.99/mo for what Seedance gives for free is wasteful.
+- **Higgsfield is not viable on free tier** (10 credits/day). Revisit only if revenue justifies paid.
 
 ## Fixed decisions (don't re-litigate)
 - **Niche:** alt / gothic / dark academia. Not fitness, not anime, not cottagecore.
@@ -63,9 +75,10 @@ Phase 0 in progress. Pick up at "Resume checklist" below.
 - `persona/handles.md` — handle shortlist + availability status
 - `prompts/{library,forest,tarot,outfit,study,books}.md` — prompt libraries per content pillar
 - `colab/sdxl_pipeline.ipynb` — image generation notebook (SDXL Juggernaut XL). CLIP fix applied 2026-05-16.
-- `colab/video_realistic.ipynb` — LivePortrait (face animation) + SadTalker (lip sync). Primary video pipeline.
-- `colab/video_animated.ipynb` — AnimateDiff text-to-video. Secondary/artistic/B-roll.
-- `runbook.md` — daily content production workflow
+- `colab/video_realistic.ipynb` — LivePortrait (face animation) + SadTalker (lip sync). **Precision-only**, not daily driver.
+- `colab/video_animated.ipynb` — **DEPRECATED 2026-05-18.** AnimateDiff replaced by Seedance + Kling. Archive only.
+- `content/video_stack.md` — image-to-video operator guide (Seedance / Kling / Wan 2.2). Read this before every Sunday batch.
+- `runbook.md` — daily content production workflow (now references `content/video_stack.md` in step 4)
 - `affiliate/programs.md` — tracker for every affiliate program (status, login, commission)
 - `outreach/brand_template.md` — DM template for brand deals
 - `analytics/log.md` — weekly numbers + decisions
@@ -82,6 +95,7 @@ These are all USER actions. Claude can't run Colab or click Civitai.
 2. **Pick 30** ⏸️ NEXT — when zip downloads, scrub locally, move the 30 most-consistent images (same face/hair/build) into a `picks/` subfolder. Upload `picks/` to Google Drive at `MyDrive/cordelia_picks/`.
 3. **LoRA training** (~1 hr) — upload the 30 picks to `civitai.com/training` → free quota → download the resulting `.safetensors` → drop in Google Drive.
 4. **Ping Claude:** "LoRA done, wire it in" → Claude edits Cell 4 of `sdxl_pipeline.ipynb` + wires LoRA into `video_realistic.ipynb` + writes Week 1's content batch.
+5. **Sign up for Seedance 2.0** (https://seedance.ai or seedance.tv) and **Kling AI** (https://klingai.com) before Sunday batch. Free, no credit card. Test each by uploading one Cordelia still + prompt "slow dolly in, candle flicker, hair drifts gently" — verify quality before committing the workflow. See `content/video_stack.md`.
 
 ### Track B — GitHub Pages push ✅ DONE 2026-05-16
 

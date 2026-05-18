@@ -15,18 +15,26 @@
    - Connect to free T4 GPU
    - Run all cells; the notebook generates ~50 stills based on the week's prompt plan
    - Download the output zip
-4. **Edit all 7 source videos in one CapCut session**
+   - **Compose for motion:** leave headroom and negative space in stills — image-to-video tools animate that empty space (camera pans, candle flicker, hair movement). Tightly cropped stills produce stiff videos.
+4. **Animate stills → source clips** (image-to-video, see `content/video_stack.md`)
+   - **Primary: Seedance 2.0** — upload best ~7 stills, prompt camera motion ("slow dolly in", "candle flicker, hair drifts"), 1080p, no watermark, commercial OK. 100 credits/day = ~5 finished clips.
+   - **Secondary: Kling AI** — when Seedance motion is too tame, run the same still through Kling for more dramatic camera work. 66 credits/day = ~6 watermarked 5-sec clips (crop watermark in CapCut step).
+   - **Backup: Wan 2.2 on Colab** when daily quotas are gone and you still need clips.
+   - **Precision-only: LivePortrait / SadTalker** (`colab/video_realistic.ipynb`) — use for talking-head voice posts where Cordelia's lips need to match audio, or for precise face control Seedance can't deliver.
+   - Save all source clips to `content/[week]/source/` before editing.
+5. **Edit all 7 source videos in one CapCut session**
    - Template: load `templates/dark_academia_master.ccd` (we build this in week 1)
-   - Drop stills, apply colour grade, add text overlay, export at 1080×1920
-5. **Generate 3 platform variants per video**
+   - Import source clips from step 4, apply colour grade, add text overlay, export at 1080×1920
+   - For any Kling clip with a watermark: zoom 5–8% on import to crop it out
+6. **Generate 3 platform variants per video**
    - TikTok: native CapCut export, add TikTok-library music
    - IG Reels: same but with IG-trending audio (find via Reel pulse trends)
    - YouTube Shorts: re-render with YT-friendly title card
    - Pinterest: take the strongest still, format as 4:5 idea pin with text overlay
-6. **Write 21 captions + hooks** (I generate, you review)
+7. **Write 21 captions + hooks** (I generate, you review)
    - Caption template in `prompts/captions.md`
    - Each caption: hook (8 words max), body (1–2 sentences), CTA (vague: "more in bio" not "buy now"), 5–8 hashtags
-7. **Schedule the week**
+8. **Schedule the week**
    - Manual post times — see "posting schedule" below
    - Drop all 21 files into `content/2026-MM-DD/` folder, named `[day]_[pillar]_[platform].mp4`
 
